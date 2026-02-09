@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para ti ❤️</title>
+    <style>
+        body {
+            background-color: #ffe6e6;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        
+        /* Estilo para la foto */
+        .foto-container {
+            margin-bottom: 20px;
+        }
+        .foto-pareja {
+            width: 250px; /* Tamaño de la foto */
+            height: auto;
+            border-radius: 15px; /* Bordes redondeados */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Sombrita elegante */
+            border: 5px solid white;
+            transition: transform 0.3s;
+        }
+        .foto-pareja:hover {
+            transform: scale(1.05); /* Efecto zoom al pasar el mouse */
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 2.5rem;
+            margin: 10px 0;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+        
+        button {
+            font-size: 1.2rem;
+            padding: 10px 25px;
+            margin: 10px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        #yesBtn {
+            background-color: #ff4d4d;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 77, 77, 0.4);
+        }
+        #yesBtn:hover {
+            transform: scale(1.1);
+        }
+        
+        #noBtn {
+            background-color: #ffffff;
+            color: #ff4d4d;
+            border: 2px solid #ff4d4d;
+            position: absolute;
+        }
+
+        #mensajeFinal {
+            display: none;
+            color: #d63384;
+            font-size: 2rem;
+            margin-top: 20px;
+            animation: fadeIn 2s;
+        }
+
+        /* Reproductor de música discreto */
+        audio {
+            margin-top: 20px;
+            width: 200px;
+            opacity: 0.8;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="foto-container">
+        <img src="nosotros.png" alt="Nosotros" class="foto-pareja">
+    </div>
+
+    <div id="contenido-principal">
+        <h1 id="pregunta">¿Quieres ser mi San Valentín? ☀️♥️</h1>
+        
+        <audio id="musica" controls autoplay loop>
+            <source src="cancion.mp3" type="audio/mpeg">
+            Tu navegador no soporta el audio.
+        </audio>
+
+        <div class="buttons">
+            <button id="yesBtn" onclick="dijoQueSi()">¡Sí, claro!</button>
+            <button id="noBtn" onmouseover="mueveElBoton()" onclick="mueveElBoton()">No :(</button>
+        </div>
+    </div>
+
+    <div id="mensajeFinal">
+        <h1>¡Sabía que dirías que sí flaquita mía! 🥰☀️</h1>
+        <p>Eres el amor de mi vida y me gustaría pasar todas estas lindas fechas a tu lado.</p>
+        <p><i>🎶 Nuestra cancioncita 🎶</i></p>
+    </div>
+
+    <script>
+        function mueveElBoton() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            
+            const newX = Math.random() * (width - 200);
+            const newY = Math.random() * (height - 100);
+
+            const btnNo = document.getElementById('noBtn');
+            btnNo.style.left = newX + "px";
+            btnNo.style.top = newY + "px";
+        }
+
+        function dijoQueSi() {
+            document.getElementById('contenido-principal').style.display = 'none';
+            document.getElementById('mensajeFinal').style.display = 'block';
+            document.body.style.backgroundColor = "#ffcccc";
+            
+            // Intentar subir el volumen o reproducir si no estaba sonando
+            var audio = document.getElementById("musica");
+            audio.play();
+        }
+    </script>
+</body>
+</html>
